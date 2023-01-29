@@ -1,4 +1,8 @@
+require('dotenv').config();
 
+const bcrypt = require('bcryptjs');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
 
 // controlleurs pour l'authentification
 exports.login = (req, res, next) => {
@@ -7,19 +11,16 @@ exports.login = (req, res, next) => {
     User.findOne({ email: email })
         .then(user => {
         if (!user) {
-            return res.redirect('/login');
+            return res.json({redirectLogin: true, message: "user not found"});
         }
         bcrypt.compare(password, user.password)
         .then( doMatch => {
             if (doMatch) {
-            req.session.isLoggedIn = true;
-            req.session.user = user;
-            return req.session.save(err => {
-                console.log(err);
-                res.redirect('/');
-            })
+                return jwt.sign(email, process.env.ACCESS_TOKEN_SECRET, (err, token) => {
+                    return res.json({accessToken: token, redirectHome: true});
+                })
             }
-            return res.redirect('/login');
+            return res.json({redirectLogin: true, message: "password is not correct"})
         })
         .catch( err => {
             console.log(err);
@@ -31,11 +32,10 @@ exports.login = (req, res, next) => {
 exports.signup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    const confirmPassword = req.body.confirmPassword;
     User.findOne({ email: email })
     .then( userDoc => {
         if(userDoc){
-            return res.redirect('/signup');
+            return res.json({redirectSignup: true});
         }
         return bcrypt.hash(password, 12)
         .then( hashedPassword => {
@@ -46,7 +46,7 @@ exports.signup = (req, res, next) => {
             return user.save();
         })
         .then( result => {
-            return res.redirect('/login');
+            return res.json({redirectLogin: true});
         })
         .catch((err) => {
             console.log(err);

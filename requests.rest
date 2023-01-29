@@ -1,0 +1,115 @@
+POST http://localhost:4000/signup
+Content-Type: application/json
+
+{
+    "email": "youssef.mkht1@gmail.com",
+    "password": "youssef1"
+}
+
+###
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "youssef.mkht1@gmail.com",
+    "password": "youssef1"
+}
+
+###
+
+POST http://localhost:4000/createFood
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "label": "apple",
+    "description": "green apple must be eaten as soon as possible for max health benifits"
+}
+
+###
+
+POST http://localhost:4000/patchFood
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "id": "63d6db76316d6d655a92091d",
+    "label": "patched apple",
+    "description": "green apple must be eaten as soon as possible for max health benifits"
+}
+
+###
+
+POST http://localhost:4000/deleteFood
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "id": "63d6dca5d408ccc4afbe736c"
+}
+
+###
+
+GET http://localhost:4000/foods
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+###
+
+POST http://localhost:4000/createFoodsList
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "foodList": [
+        {
+            "label": "apple0",
+            "description": "green apple must be eaten as soon as possible for max health benifits"
+        },
+        {
+            "label": "apple1",
+            "description": "green apple must be eaten as soon as possible for max health benifits"
+        }
+    ]
+}
+
+###
+
+POST http://localhost:4000/patchFoodsList
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "id": "63d6fa16216eefc9ad018960",
+    "foodList": [
+        {
+            "label": "apple0",
+            "description": "green apple must be eaten as soon as possible for max health benifits"
+        },
+        {
+            "label": "apple1",
+            "description": "green apple must be eaten as soon as possible for max health benifits"
+        },
+        {
+            "label": "apple2",
+            "description": "green apple must be eaten as soon as possible for max health benifits"
+        }
+    ]
+}
+
+###
+
+POST http://localhost:4000/deleteFoodsList
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M
+
+{
+    "id": "63d6fa26216eefc9ad018963"
+}
+
+###
+
+GET http://localhost:4000/foodsList
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eW91c3NlZi5ta2h0MUBnbWFpbC5jb20.0vhvUWfFGctzAKd_SPwJQJEwpF81aI81Ny9nWsueM2M

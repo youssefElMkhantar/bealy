@@ -1,25 +1,30 @@
 const express = require('express');
 
 const foodController = require('../controllers/food');
+const { verify } = require('../controllers/verifyUser');
+
 
 const router = express.Router();
 
 
 // routes pour les aliments
-router.get('/foods', foodController.getFoods)
+router.get('/foods', verify, foodController.getFoods)
 
-router.post('/createFood', foodController.createFood);
+router.post('/createFood',verify, foodController.createFood);
 
-router.post('/patchFood', foodController.patchFood);
+router.post('/patchFood',verify, foodController.patchFood);
 
-router.post('/deleteFood', foodController.deleteFood);
+router.post('/deleteFood',verify, foodController.deleteFood);
 
 
 // routes pour les list des aliments
-router.get('/foodsList', foodController.getFoods)
+router.get('/foodsList',verify, foodController.getFoodsList)
 
-router.post('/createFoodsList', foodController.createFood);
+router.post('/createFoodsList',verify, foodController.createFoodsList);
 
-router.post('/patchFoodsList', foodController.patchFood);
+router.post('/patchFoodsList',verify, foodController.patchFoodsList);
 
-router.post('/deleteFoodsList', foodController.deleteFood);
+router.post('/deleteFoodsList',verify, foodController.deleteFoodsList);
+
+
+module.exports = router;

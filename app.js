@@ -7,6 +7,7 @@ const MONGODB_URI =
   'mongodb+srv://youssef:youssefRCA%400813@cluster0.jfiexlp.mongodb.net/bealy?retryWrites=true&w=majority';
 
 const app = express();
+app.use(express.json());
 
 const foodRoutes = require('./routes/food');
 const userRoutes = require('./routes/user');
@@ -17,8 +18,8 @@ app.use( (req, res, next) => {
   next();
 })
 
-// app.use(foodRoutes);
-// app.use(userRoutes);
+app.use(foodRoutes);
+app.use(userRoutes);
 
 
 mongoose
