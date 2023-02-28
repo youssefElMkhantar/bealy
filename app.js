@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const MONGODB_URI =
-  'mongodb+srv://youssef:youssefRCA%400813@cluster0.jfiexlp.mongodb.net/bealy?retryWrites=true&w=majority';
+  process.env.MONGODB_URI;
 
 const app = express();
 app.use(express.json());
